@@ -96,3 +96,20 @@ A phase-locked loop or PLL is a control system that generates an output signal w
 
 ## What is DAC
 A digital-to-analog converter or DAC is a system that converts a digital signal into an analog signal. DACs are widely used in modern communication systems enabling the generation of digitally-defined transmission signals. As a result, high-speed DACs are used for mobile communications and ultra-high-speed DACs are employed in optical communications systems.
+
+## VSDBabySoC Modeling
+Here we are going to model and simulate the VSDBabySoC using iverilog, then we will show the results using gtkwave tool. Some initial input signals will be fed into vsdbabysoc module that make the pll start generating the proper CLK for the circuit. The clock signal will make the rvmyth to execute instructions in its imem. As a result the register r17 will be filled with some values cycle by cycle. These values are used by dac core to provide the final output signal named OUT. So we have 3 main elements (IP cores) and a wrapper as an SoC and of-course there would be also a testbench module out there.
+
+Please note that in the following sections we will mention some repos that we used to model the SoC. However the main source code is resided in Source-Code Directory and these modules are in Modules Sub-Directory.
+
+## RVMYTH modeling
+As we mentioned in What is RVMYTH section, RVMYTH is designed and created by the TL-Verilog language. So we need a way for compile and trasform it to the Verilog language and use the result in our SoC. Here the sandpiper-saas could help us do the job.
+
+Here is the repo we used as a reference to model the RVMYTH
+
+## PLL and DAC modeling
+It is not possible to sythesis an analog design with Verilog, yet. But there is a chance to simulate it using real datatype. We will use the following repositories to model the PLL and DAC cores:
+
+Here is the repo we used as a reference to model the PLL
+Here is the repo we used as a reference to model the DAC
+CAUTION: In the beginning of the project, we get our verilog model of the PLL from here. However, by proceeding the project to the physical design flow we realize that this model needs a little changes to become sufficient for a real IP core. So we changed it a little and created a new model named AVSDPLL based on this IP
