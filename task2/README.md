@@ -113,3 +113,5 @@ It is not possible to sythesis an analog design with Verilog, yet. But there is 
 Here is the repo we used as a reference to model the PLL
 Here is the repo we used as a reference to model the DAC
 CAUTION: In the beginning of the project, we get our verilog model of the PLL from here. However, by proceeding the project to the physical design flow we realize that this model needs a little changes to become sufficient for a real IP core. So we changed it a little and created a new model named AVSDPLL based on this IP
+
+## Step by step modeling walkthrough
